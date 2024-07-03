@@ -1,4 +1,11 @@
 using CrudApp.DB;
+using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using TestCrud.Entities;
+using TestCrud.Models;
+using TestCrud.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -8,6 +15,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<MongoDbService>();
+builder.Services.AddTransient<IValidator<User>, UserValidator>();
+builder.Services.AddTransient<IValidator<UserLogin>, UserLoginValidator>();
 
 var app = builder.Build();
 

@@ -1,5 +1,6 @@
 ﻿using CrudApp.Entities;
 using MongoDB.Driver;
+using TestCrud.Entities;
 
 namespace CrudApp.DB
 {
